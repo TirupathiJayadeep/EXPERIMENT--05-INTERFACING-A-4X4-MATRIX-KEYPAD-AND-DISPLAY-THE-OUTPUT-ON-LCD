@@ -183,8 +183,22 @@ https://engineeringxpert.com/wp-content/uploads/2022/04/26.png
 
 ## STM 32 CUBE PROGRAM :
 ```
+int main(void)
+{
+  HAL_Init();
+  SystemClock_Config();
+  MX_GPIO_Init();
+
+   while (1)
+    {
+	   key();
+	   HAL_Delay(1000);
+	 }
+}
+
 void key()
 {
+
 
 	Lcd_PortType ports[] = { GPIOA, GPIOA, GPIOA, GPIOA };
 	  Lcd_PinType pins[] = {GPIO_PIN_3, GPIO_PIN_2, GPIO_PIN_1, GPIO_PIN_0};
@@ -202,7 +216,7 @@ void key()
 	 col4 = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_7);
 	 if(!col1)
 	 {
-	 	   		   	  	 		  Lcd_cursor(&lcd, 0,1);
+Lcd_cursor(&lcd, 0,1);
 	 	   		   	  	 	  	  Lcd_string(&lcd, "Key 7\n");
  	 	   		   	  	 	  	  col1=1;
 	 }
